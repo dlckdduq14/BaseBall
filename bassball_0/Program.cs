@@ -23,6 +23,7 @@ namespace bassball_0
                 if (answers[0] != answers[1] && answers[1] != answers[2] && answers[2] != answers[0])
                     break;
             }
+
             Console.WriteLine("[정답] ");
             for (int i = 0; i < Constant.Digit; i++)
                 Console.Write(answers[i] + " ");
