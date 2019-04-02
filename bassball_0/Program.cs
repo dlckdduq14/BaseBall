@@ -32,7 +32,7 @@ namespace bassball_0
             }
             Console.WriteLine("[정답] ");
             for (int i = 0; i < Digit; i++)
-                Console.WriteLine(answers[i] + "  ");
+                Console.Write(answers[i] + " ");
             Console.WriteLine();
 
             int tryCount = 0;
@@ -50,7 +50,7 @@ namespace bassball_0
 
                 Console.WriteLine("[추측] ");
                 for (int i = 0; i < Digit; i++)
-                    Console.WriteLine(guesses[i] + "  ");
+                    Console.Write(guesses[i] + " ");
                 Console.WriteLine();
 
                 int strike = 0;
