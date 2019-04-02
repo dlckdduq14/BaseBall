@@ -8,75 +8,56 @@ namespace bassball_0
 {
     class Program
     {
-        const int maxValue = 10;
-        const int Digit = 3;
+        
         static void Main(string[] args)
         {
+            // 1. 정답을 생성한다.
             Random random = new Random();
-            int[] answers = new int[Digit];
+            int[] answers = new int[Constant.Digit];
             
             while(true)
             {
-                //int i = 0;
-                //while(i<Digit)
-                //{
-                //    answers[i] = random.Next(maxValue);
-                //    i++;
-                //}
-
-                for (int i = 0; i < Digit; i++)
-                    answers[i] = random.Next(maxValue);
+                for (int i = 0; i < Constant.Digit; i++)
+                    answers[i] = random.Next(Constant.maxValue);
                 // todo: 나중에 수정
                 if (answers[0] != answers[1] && answers[1] != answers[2] && answers[2] != answers[0])
                     break;
             }
             Console.WriteLine("[정답] ");
-            for (int i = 0; i < Digit; i++)
+            for (int i = 0; i < Constant.Digit; i++)
                 Console.Write(answers[i] + " ");
             Console.WriteLine();
 
             int tryCount = 0;
-
+            
             while(true)
             {
                 tryCount++;
-
-                int[] guesses = new int[Digit];
-
-                for (int i = 0; i < Digit; i++)
+                // 2. 추축을 입력받는다.
+                int[] guesses = new int[Constant.Digit];
+                for (int i = 0; i < Constant.Digit; i++)
                 {
                     guesses[i] = Convert.ToInt32(Console.ReadLine());
                 }
 
                 Console.WriteLine("[추측] ");
-                for (int i = 0; i < Digit; i++)
+                for (int i = 0; i < Constant.Digit; i++)
                     Console.Write(guesses[i] + " ");
                 Console.WriteLine();
 
-                int strike = 0;
-                int ball   = 0;
-                int @out   = 0;
+                // 3. 정답과 추측을 비교하여 결과를 생성한다.
+                Result result = new Result();
 
-                for (int i = 0; i < Digit; i++)
-                {
-                    int j = (i + 1) % Digit;
-                    int k = (i + 2) % Digit;
+                result.Calculate(answers,guesses);
 
-                    if (answers[i] == guesses[i])
-                        strike++;
-                    else if ( answers[i] == guesses[j] 
-                           || answers[i] == guesses[k])
-                        ball++;
-                    else
-                        @out++;
-                }
+                // 4. 결과를 출력한다.
+                result.print();
 
-                Console.WriteLine($"S: {strike}, B:{ball}, C:{@out}");
-
-                if (strike == Digit)
+                // 5. 정답과 추측이 일치하지 않으면 2번으로 돌아간다.
+                if (result.IsCorrect())
                     break;
             }
-
+            // 6. 정답을 맞추는데 걸린 횟수를 출력하고 종료한다.
             Console.WriteLine($"총{tryCount}번 만에 했습니다.");
         }
     }
