@@ -21,13 +21,16 @@ namespace bassball_0
             Console.WriteLine();
         }
         
-        static void Main(string[] args)
+        /// <summary>
+        /// 3개의 랜덤한 숫자를 중복되지 않게 정답을 생성한다.
+        /// </summary>
+        /// <returns></returns>
+        static int CreateAnswers()
         {
-            // 1. 정답을 생성한다.
             Random random = new Random();
             int[] answers = new int[Constant.Digit];
-            
-            while(true)
+
+            while (true)
             {
                 for (int i = 0; i < Constant.Digit; i++)
                     answers[i] = random.Next(Constant.maxValue);
@@ -35,6 +38,29 @@ namespace bassball_0
                 if (answers[0] != answers[1] && answers[1] != answers[2] && answers[2] != answers[0])
                     break;
             }
+
+            return answers;
+        }
+
+        /// <summary>
+        /// 추측을 입력 받는 장소를 만든다.
+        /// </summary>
+        /// <returns></returns>
+        static int InputGuesses()
+        {
+            int[] guesses = new int[Constant.Digit];
+            for (int i = 0; i < Constant.Digit; i++)
+            {
+                guesses[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            return guesses;
+        }
+
+        static void Main(string[] args)
+        {
+            // 1. 정답을 생성한다.
+            int[] answers = CreateAnswers();
 
             PintNumbers("[정답] ", answers);
 
@@ -44,13 +70,9 @@ namespace bassball_0
             {
                 tryCount++;
                 // 2. 추축을 입력받는다.
-                int[] guesses = new int[Constant.Digit];
-                for (int i = 0; i < Constant.Digit; i++)
-                {
-                    guesses[i] = Convert.ToInt32(Console.ReadLine());
-                }
+                int[] guesses = InputGuesses();
 
-                PintNumbers("[추측] " , guesses);
+                PintNumbers("[추측] ", guesses);
 
                 // 3. 정답과 추측을 비교하여 결과를 생성한다.
                 Result result = new Result();
