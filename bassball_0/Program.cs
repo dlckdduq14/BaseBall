@@ -8,6 +8,18 @@ namespace bassball_0
 {
     class Program
     {
+        /// <summary>
+        /// 숫자 배열을 출력한다.
+        /// </summary>
+        /// <param name="prefix">숫자 출력전에 출력할 문자열</param>
+        /// <param name="numbers">출력할 숫자</param>
+        static void PintNumbers(string prefix, int[] numbers)
+        {
+            Console.WriteLine(prefix);
+            for (int i = 0; i < Constant.Digit; i++)
+                Console.Write(numbers[i] + " ");
+            Console.WriteLine();
+        }
         
         static void Main(string[] args)
         {
@@ -24,10 +36,7 @@ namespace bassball_0
                     break;
             }
 
-            Console.WriteLine("[정답] ");
-            for (int i = 0; i < Constant.Digit; i++)
-                Console.Write(answers[i] + " ");
-            Console.WriteLine();
+            PintNumbers("[정답] ", answers);
 
             int tryCount = 0;
             
@@ -41,10 +50,7 @@ namespace bassball_0
                     guesses[i] = Convert.ToInt32(Console.ReadLine());
                 }
 
-                Console.WriteLine("[추측] ");
-                for (int i = 0; i < Constant.Digit; i++)
-                    Console.Write(guesses[i] + " ");
-                Console.WriteLine();
+                PintNumbers("[추측] " , guesses);
 
                 // 3. 정답과 추측을 비교하여 결과를 생성한다.
                 Result result = new Result();
