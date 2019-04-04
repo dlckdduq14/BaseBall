@@ -6,22 +6,8 @@ using System.Threading.Tasks;
 
 namespace bassball_0
 {
-    class Answer
+    class Answer : NumberContainer
     {
-        // public    : 접근 제한 없음
-        // private   : 클래스 안에서만 접근가능
-        // protected : 
-        private int[] numbers = new int[Constant.Digit];
-
-        public int At(int index)
-        {
-            Writelog();
-
-            return numbers[index];
-        }
-        private void Writelog()
-        {
-        }
         public void Create()
         {
             Random random = new Random();
@@ -34,14 +20,6 @@ namespace bassball_0
                 if (numbers[0] != numbers[1] && numbers[1] != numbers[2] && numbers[2] != numbers[0])
                     break;
             }
-        }
-
-        public void print()
-        {
-            Console.WriteLine("[정답] ");
-            for (int i = 0; i < Constant.Digit; i++)
-                Console.Write(numbers[i] + " ");
-            Console.WriteLine();
         }
     }
 }

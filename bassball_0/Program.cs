@@ -24,7 +24,7 @@ namespace bassball_0
                 // 2. 추축을 입력받는다.
                 Guesses guess = new Guesses(); 
                 guess.Input(); //int[] guesses = InputGuesses();
-                guess.Print(); //PintNumbers("[추측] ", guesses);
+                guess.print(); //PintNumbers("[추측] ", guesses);
 
                 // 3. 정답과 추측을 비교하여 결과를 생성한다.
                 Result result = new Result();
