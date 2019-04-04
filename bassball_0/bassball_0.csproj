@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Answer.cs" />
     <Compile Include="Constant.cs" />
+    <Compile Include="Guesses.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
