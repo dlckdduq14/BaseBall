@@ -29,10 +29,10 @@ namespace bassball_0
                 int j = (i + 1) % Constant.Digit;
                 int k = (i + 2) % Constant.Digit;
 
-                if (answer.numbers[i] == guess.numbers[i])
+                if (answer.At(i) == guess.At(i))
                     Strike++;
-                else if (answer.numbers[i] == guess.numbers[j]
-                       || answer.numbers[i] == guess.numbers[k])
+                else if (answer.At(i) == guess.At(j)
+                       || answer.At(i) == guess.At(k))
                     Ball++;
                 else
                     Out++;

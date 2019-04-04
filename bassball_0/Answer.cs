@@ -8,7 +8,16 @@ namespace bassball_0
 {
     class Answer
     {
-        public int[] numbers = new int[Constant.Digit];
+        // public    : 접근 제한 없음
+        // private   : 클래스 안에서만 접근가능
+        // protected : 
+        private int[] numbers = new int[Constant.Digit];
+
+        public int At(int index)
+        {
+            return numbers[index];
+        }
+
 
         public void Create()
         {
