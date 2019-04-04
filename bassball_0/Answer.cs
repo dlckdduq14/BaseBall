@@ -15,10 +15,13 @@ namespace bassball_0
 
         public int At(int index)
         {
+            Writelog();
+
             return numbers[index];
         }
-
-
+        private void Writelog()
+        {
+        }
         public void Create()
         {
             Random random = new Random();

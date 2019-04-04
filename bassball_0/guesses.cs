@@ -14,7 +14,6 @@ namespace bassball_0
         {
             return numbers[index];
         }
-
         public void Input()
         {
             for (int i = 0; i < Constant.Digit; i++)
